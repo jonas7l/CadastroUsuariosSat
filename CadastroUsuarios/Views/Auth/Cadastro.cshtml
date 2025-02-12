@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h2>Cadastro</h2>
+<form asp-action="Cadastrar" method="post">
+    <input type="text" name="nome" placeholder="Usuário" required />
+    <input type="password" name="senha" placeholder="Senha" required />
+    <input type="password" name="confirmacaoSenha" placeholder="Confirmar Senha" required />
+    <button type="submit">Cadastrar</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <ul>
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+    </ul>
+}
